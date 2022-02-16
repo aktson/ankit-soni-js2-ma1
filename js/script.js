@@ -1,7 +1,7 @@
 import { displayMessage } from "./displayMessage.js";
 import { searchByProductPrice } from "./searchByProductPrice.js";
-import { createProductsHtml } from "./createPoductsHtml.js";
 
+import { createProductsHtml } from "./createPoductsHtml.js";
 
 const url = "https://fakestoreapi.com/products";
 

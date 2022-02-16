@@ -1,5 +1,5 @@
 export function getFromLocalStorage() {
-    const products = localStorage.getItem("wishlistProducts");
+    const products = localStorage.getItem("wishListProducts");
 
     if (!products) {
         return [];

@@ -1,5 +1,8 @@
 import { displayMessage } from "./displayMessage.js";
-import { getFromLocalStorage } from "./getFromLocalStorage.js";
+import { getFromLocalStorage } from "./localStorageFunctions/getFromLocalStorage.js";
+import { saveToLocalStorage } from "./localStorageFunctions/saveToLocalStorage.js"
+
+const savedItemsToLocalStorage = getFromLocalStorage();
 
 export function createProductsHtml(products) {
     const productsContainer = document.querySelector(".products-container");
@@ -10,14 +13,24 @@ export function createProductsHtml(products) {
         displayMessage(".products-container", "message", "No results")
     }
 
+
     products.forEach(product => {
+        let cssClass = "";
+
+        const productExists = savedItemsToLocalStorage.find(function (item) {
+            return +item.id === product.id
+        })
+        if (productExists) {
+            cssClass = "fav";
+        }
+
         productsContainer.innerHTML += `<div class="card d-flex flex-column justify-content-around" >
                                         <img src="${product.image}" class="card-img mx-auto" alt="...">
                                         <div class="card-body d-flex flex-column justify-content-between gap-2">
                                             <h5 class="card-title flex-1" style="color:gray; font-weight:bold;">${product.title}</h5>
                                             <div>
                                                 <p class="card-text" style="color:gray; font-weight:bold;">NOK ${product.price}</p>
-                                                <i class="fa-solid fa-heart" data-id="${product.id}" data-name="${product.title}" data-price="${product.price}" data-image="${product.image}"></i>
+                                                <i class="fa-solid fa-heart ${cssClass}" data-id="${product.id}" data-name="${product.title}" data-price="${product.price}" data-image="${product.image}"></i>
                                             <div>
                                         </div>
                                     </div>`
@@ -30,7 +43,7 @@ export function createProductsHtml(products) {
 }
 
 //Click event for favoutie buttons(hearts)
-function handleClick() {
+export function handleClick() {
     this.classList.toggle("fav");
 
     const id = this.dataset.id;
@@ -41,28 +54,24 @@ function handleClick() {
 
     const currentProduct = getFromLocalStorage();
 
-    const findCurrenProduct = currentProduct.find(function (product) {
-        return product.id === id
+
+    const findCurrentProduct = currentProduct.find(function (product) {
+        return product.id === id;
     })
 
-    if (!findCurrenProduct) {
-        const product = { id: id, title: title, price: price, image: image }
+
+    if (!findCurrentProduct) {
+        const product = { id: id, title: title, price: price, image: image };
         currentProduct.push(product);
         saveToLocalStorage(currentProduct)
-    }
-    else {
+
+    } else {
         const newCurrentProduct = currentProduct.filter(product => {
             return product.id !== id;
-
         })
         saveToLocalStorage(newCurrentProduct);
-        console.log(newCurrenProduct)
     }
-
 }
 
 
-function saveToLocalStorage(product) {
-    localStorage.setItem("wishListProducts", JSON.stringify(product))
-}
 

@@ -7,6 +7,7 @@ export function searchByProductPrice(products) {
     searchInput.addEventListener("keyup", () => {
 
         const searchValue = event.target.value.trim();
+        createProductsHtml(products);
 
         if (!searchValue) return;
 
@@ -14,9 +15,12 @@ export function searchByProductPrice(products) {
             if (searchValue >= +product.price) {
                 return true;
             }
+
         })
         createProductsHtml(searchProduct);
 
+
     });
+
 };
 
