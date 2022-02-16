@@ -16,6 +16,7 @@ export function createProductsHtml(products) {
 
     products.forEach(product => {
         let cssClass = "";
+        console.log(product)
 
         const productExists = savedItemsToLocalStorage.find(function (item) {
             return +item.id === product.id
@@ -25,7 +26,7 @@ export function createProductsHtml(products) {
         }
 
         productsContainer.innerHTML += `<div class="card d-flex flex-column justify-content-around" >
-                                        <img src="${product.image}" class="card-img mx-auto" alt="...">
+                                        <img src="${product.image}" class="card-img mx-auto" alt="${product.title}">
                                         <div class="card-body d-flex flex-column justify-content-between gap-2">
                                             <h5 class="card-title flex-1" style="color:gray; font-weight:bold;">${product.title}</h5>
                                             <div>
