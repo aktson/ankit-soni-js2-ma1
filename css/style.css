@@ -30,7 +30,7 @@ footer {
 }
 .products-container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(1fr);
   justify-content: center;
   gap: 1rem;
   position: relative;
@@ -63,4 +63,21 @@ footer {
   grid-column: span 2;
   text-align: center;
   margin-top: 1rem;
+}
+
+@media (min-width: 576px) {
+  .products-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 992px) {
+  .products-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (min-width: 1200px) {
+  .products-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }

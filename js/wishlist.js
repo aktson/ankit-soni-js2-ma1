@@ -7,7 +7,7 @@ const savedProducts = getFromLocalStorage();
 const productContainer = document.querySelector(".products-container");
 
 if (savedProducts.length === 0) {
-    displayMessage(".products-container", "message", "Nothing here yet!! ")
+    displayMessage(".products-container", "message", "Nothing here yet!!  ")
 }
 
 savedProducts.forEach(product => {
