@@ -1,7 +1,7 @@
 import { displayMessage } from "./displayMessage.js";
 import { searchByProductPrice } from "./searchByProductPrice.js";
-
 import { createProductsHtml } from "./createPoductsHtml.js";
+
 
 const url = "https://fakestoreapi.com/products";
 
@@ -12,6 +12,7 @@ const fetchProducts = async () => {
 
         createProductsHtml(products)
         searchByProductPrice(products)
+
     }
     catch (error) {
         displayMessage(".products-container", "error", error)

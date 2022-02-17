@@ -16,7 +16,6 @@ export function createProductsHtml(products) {
 
     products.forEach(product => {
         let cssClass = "";
-        console.log(product)
 
         const productExists = savedItemsToLocalStorage.find(function (item) {
             return +item.id === product.id
@@ -52,14 +51,12 @@ export function handleClick() {
     const price = this.dataset.price;
     const image = this.dataset.image;
 
-
     const currentProduct = getFromLocalStorage();
 
 
     const findCurrentProduct = currentProduct.find(function (product) {
         return product.id === id;
     })
-
 
     if (!findCurrentProduct) {
         const product = { id: id, title: title, price: price, image: image };
@@ -72,6 +69,7 @@ export function handleClick() {
         })
         saveToLocalStorage(newCurrentProduct);
     }
+
 }
 
 

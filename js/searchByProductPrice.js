@@ -15,12 +15,8 @@ export function searchByProductPrice(products) {
             if (searchValue >= +product.price) {
                 return true;
             }
-
         })
         createProductsHtml(searchProduct);
-
-
     });
-
 };
 
