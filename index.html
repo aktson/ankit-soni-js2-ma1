@@ -52,7 +52,16 @@
       <div class="container my-5">
         <div class="d-flex justify-content-between p-2">
           <h1 class="text-center">Products</h1>
-          <input type="number" class="form-control search" placeholder="search from price " />
+          <div class="d-flex gap-2">
+            <input type="number" class="form-control search" placeholder="search from price " />
+            <select name="category" id="category" class="form-select">
+              <option value="none">Choose from category</option>
+              <option value="men's clothing">Men's clothing</option>
+              <option value="jewelery">Jewelery</option>
+              <option value="electronics">Electronics</option>
+              <option value="women's clothing">Women's clothing</option>
+            </select>
+          </div>
         </div>
         <div class="products-container my-5">
           <div class="spinner-border text-dark position-absolute end-50" style="width: 3rem; height: 3rem" role="status">
