@@ -30,7 +30,7 @@ export function createProductsHtml(products) {
                                             <h5 class="card-title flex-1" style="color:gray; font-weight:bold;">${product.title}</h5>
                                             <div>
                                                 <p class="card-text" style="color:gray; font-weight:bold;">NOK ${product.price}</p>
-                                                <i class="fa-solid fa-heart ${cssClass}" data-id="${product.id}" data-name="${product.title}" data-price="${product.price}" data-image="${product.image}"></i>
+                                                <i class="fa-solid fa-heart ${cssClass}" data-id="${product.id}" data-title="${product.title}" data-price="${product.price}" data-image="${product.image}"></i>
                                             <div>
                                         </div>
                                     </div>`
