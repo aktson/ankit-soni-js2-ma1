@@ -11,15 +11,16 @@ export function createProductsHtml(products) {
 
     if (products.length === 0) {
         displayMessage(".products-container", "message", "No results")
-    }
-
-
+    };
+    //running loop on products
     products.forEach(product => {
         let cssClass = "";
 
+        //looking for product id if matches with id which is saved to local storage
         const productExists = savedItemsToLocalStorage.find(function (item) {
             return +item.id === product.id
         })
+        //if prodcut exists in localstorage then add fav class
         if (productExists) {
             cssClass = "fav";
         }
@@ -53,23 +54,25 @@ export function handleClick() {
 
     const currentProduct = getFromLocalStorage();
 
-
+    //find current product and match id if there is any product
     const findCurrentProduct = currentProduct.find(function (product) {
         return product.id === id;
     })
 
+    //if there is not any product in local storage with found id then create one and push products
     if (!findCurrentProduct) {
         const product = { id: id, title: title, price: price, image: image };
         currentProduct.push(product);
         saveToLocalStorage(currentProduct)
 
-    } else {
+    }
+    //else filter products and don't return product which matches with product exists in local storage and return new current product
+    else {
         const newCurrentProduct = currentProduct.filter(product => {
             return product.id !== id;
         })
         saveToLocalStorage(newCurrentProduct);
     }
-
 }
 
 
